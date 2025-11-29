@@ -1,28 +1,26 @@
 'use strict';
 
+const createCounter = () => {
+  let count = 0;
+  return {
+    increment: () => ++count,
+    getCount: () => count,
+  };
+};
+
+const counter = createCounter();
 const button = document.getElementById('counter');
 
 button.addEventListener('click', () => {
-	const newCount = counter1.increment();
-	button.textContent = `Кликни меня (${newCount})`;
+  counter.increment();  
+  button.textContent = `Кликни меня (${counter.getCount()})`;
 });
-
-const createCounter1 = () => {
-	let count = 0;
-
-	return {
-		increment: () => ++count,
-		getCount: () => count,
-	};
-};
-
-const counter1 = createCounter1();
 
 // При клике на «Увеличить» число в этой кнопке росло на 1.
 // При клике на «Уменьшить» — число в кнопке «Увеличить» уменьшалось на 1.
 // Состояние (count) — приватное, через замыкание.
 
-const createCounter = () => {
+const createCounter2 = () => {
 	let count = 0;
 	return {
 		increment: () => ++count,
@@ -31,19 +29,19 @@ const createCounter = () => {
 	};
 };
 
-const counter = createCounter();
+const counter2 = createCounter();
 
 const incButton = document.getElementById('inc');
 const decButton = document.getElementById('dec');
 
 incButton.addEventListener('click', () => {
-	counter.increment();
-	incButton.textContent = `Увеличить (${counter.getCount()})`;
+	counter2.increment();
+	incButton.textContent = `Увеличить (${counter2.getCount()})`;
 });
 
 decButton.addEventListener('click', () => {
-	counter.decrement();
-	incButton.textContent = `Увеличить (${counter.getCount()})`;
+	counter2.decrement();
+	incButton.textContent = `Увеличить (${counter2.getCount()})`;
 });
 
 // При клике текст менялся на:
@@ -172,6 +170,28 @@ document.getElementById('secret').addEventListener('click', function() {
 // Используй setInterval и clearInterval.
 // 💡 Подсказка: храни intervalId внутри замыкания, чтобы можно было остановить таймер. 
 
+const timerButton = document.getElementById('start');
+const timerBlock = document.getElementById('timer');
 
+
+const timerStart =() =>{
+	let count = 5;
+	intervalId = 1000;	
+	return{
+	dec: ()=>{
+			if(count > 0){				
+				count --
+				setInterval(intervalId);
+			}
+			return count;
+		},
+	}
+}
+
+const timer = timerStart();
+
+timerButton.addEventListener('click',()=>{
+	
+})
 
 
